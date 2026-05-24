@@ -6,9 +6,6 @@
 <title>Our Journey ✦</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,400;0,9..40,500;1,9..40,300&family=Pinyon+Script&display=swap" rel="stylesheet"/>
 <style>
-/* ============================================
-   RESET & BASE
-============================================ */
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --rose:#c97b7b;--rose-light:#e8b4b4;--rose-pale:#fdf0f0;
@@ -17,72 +14,52 @@
   --white:#ffffff;
 }
 html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;background:var(--cream)}
-/* ============================================
-   PAGE SYSTEM
-============================================ */
+
+/* PAGE SYSTEM */
 .page{
   position:fixed;inset:0;width:100%;height:100%;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity 0.8s ease,transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  opacity:0;pointer-events:none;
+  transition:opacity 0.8s ease,transform 0.8s cubic-bezier(0.16,1,0.3,1);
   transform:translateY(30px);overflow:hidden;
 }
 .page.active{opacity:1;pointer-events:all;transform:translateY(0)}
 .page.exit-up{opacity:0;transform:translateY(-40px)}
-.page.exit-down{opacity:0;transform:translateY(40px)}
 
-/* ============================================
-   BACKGROUND EFFECTS
-============================================ */
+/* BACKGROUNDS */
 .bg-dots{
   position:absolute;inset:0;
   background-image:radial-gradient(circle,var(--rose-light) 1px,transparent 1px);
   background-size:28px 28px;opacity:0.35;pointer-events:none;
 }
+#page-intro .bg-dots{animation:dotsFloat 20s linear infinite}
+@keyframes dotsFloat{0%{background-position:0 0}100%{background-position:28px 28px}}
 .bg-gradient-warm{background:linear-gradient(135deg,#fdf0f0 0%,#faf6f0 40%,#f5ede3 100%)}
-.bg-gradient-dusk{background:linear-gradient(160deg,#1a0a0a 0%,#3d1515 40%,#6b2d2d 100%)}
 .bg-gradient-dawn{background:linear-gradient(135deg,#fef9f0 0%,#fdf0e8 50%,#f8e8d8 100%)}
-.bg-gradient-night{background:linear-gradient(160deg,#0d0a1a 0%,#1a1030 50%,#2d1545 100%)}
-.bg-gradient-forest{background:linear-gradient(135deg,#0a1a10 0%,#1a3520 50%,#2d5535 100%)}
-.bg-gradient-ocean{background:linear-gradient(135deg,#0a1020 0%,#102040 50%,#1535607 100%);background:linear-gradient(135deg,#071020 0%,#0f2540 50%,#1a3560 100%)}
 
-/* Floating petals */
-.petal{
-  position:absolute;pointer-events:none;
-  font-size:1.2rem;animation:petalFall linear infinite;opacity:0.6;
-}
+/* PETALS */
+.petal{position:absolute;pointer-events:none;font-size:1.2rem;animation:petalFall linear infinite;opacity:0.6}
 @keyframes petalFall{
   0%{transform:translateY(-10vh) rotate(0deg) translateX(0);opacity:0}
-  10%{opacity:0.6}
-  90%{opacity:0.4}
+  10%{opacity:0.6}90%{opacity:0.4}
   100%{transform:translateY(110vh) rotate(720deg) translateX(var(--drift,30px));opacity:0}
 }
 
-/* Stars for dark pages */
-.star{
-  position:absolute;pointer-events:none;
-  width:2px;height:2px;border-radius:50%;background:white;
-  animation:twinkle ease-in-out infinite;
-}
+/* STARS */
+.star{position:absolute;pointer-events:none;width:2px;height:2px;border-radius:50%;background:white;animation:twinkle ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:0.2;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
 
-/* ============================================
-   PAGE 1 — INTRO
-============================================ */
+/* ===================== PAGE 1 — INTRO ===================== */
 #page-intro{background:var(--cream)}
-#page-intro .bg-dots{animation:dotsFloat 20s linear infinite}
-@keyframes dotsFloat{0%{background-position:0 0}100%{background-position:28px 28px}}
-
 .intro-content{position:relative;z-index:2;text-align:center;padding:2rem;max-width:900px;width:95%}
 .intro-eyebrow{
   font-family:'DM Sans',sans-serif;font-size:0.7rem;letter-spacing:0.4em;
   text-transform:uppercase;color:var(--rose);margin-bottom:1.25rem;
   opacity:0;animation:fadeUp 1s 0.3s ease forwards;
 }
-/* Names shown on two lines with ampersand connector */
 .intro-title{
   display:flex;flex-direction:column;align-items:center;
   opacity:0;animation:fadeUp 1.2s 0.6s ease forwards;
-  gap:0;
 }
 .intro-name{
   font-family:'Pinyon Script',cursive;
@@ -96,8 +73,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   font-size:clamp(1rem,2.5vw,1.6rem);
   font-style:italic;font-weight:300;
   color:var(--brown);letter-spacing:0.3em;
-  text-transform:uppercase;line-height:2;
-  opacity:0.6;
+  text-transform:uppercase;line-height:2;opacity:0.6;
 }
 .intro-subtitle{
   font-family:'Cormorant Garamond',serif;font-size:clamp(0.95rem,2vw,1.2rem);
@@ -111,26 +87,16 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   margin:1.75rem auto;animation:expandLine 1.5s 1.3s ease forwards;
 }
 @keyframes expandLine{to{width:160px}}
+.intro-cta{opacity:0;animation:fadeUp 1s 1.8s ease forwards;margin-top:2rem}
 
-.intro-cta{
-  opacity:0;animation:fadeUp 1s 1.8s ease forwards;
-  margin-top:2rem;
-}
+/* BUTTONS */
 .btn-rose{
   display:inline-block;padding:0.9rem 2.5rem;
   background:var(--rose);color:white;border:none;border-radius:50px;
   font-family:'DM Sans',sans-serif;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;
-  cursor:pointer;transition:all 0.3s ease;
-  box-shadow:0 8px 30px rgba(201,123,123,0.4);
+  cursor:pointer;transition:all 0.3s ease;box-shadow:0 8px 30px rgba(201,123,123,0.4);
 }
 .btn-rose:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(201,123,123,0.5)}
-.btn-outline{
-  display:inline-block;padding:0.9rem 2.5rem;
-  background:transparent;color:var(--rose);border:1.5px solid var(--rose);border-radius:50px;
-  font-family:'DM Sans',sans-serif;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;
-  cursor:pointer;transition:all 0.3s ease;
-}
-.btn-outline:hover{background:var(--rose-pale);transform:translateY(-2px)}
 .btn-ghost{
   display:inline-block;padding:0.9rem 2.5rem;
   background:rgba(255,255,255,0.15);color:white;
@@ -140,20 +106,16 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 }
 .btn-ghost:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px)}
 
+/* FLOATING HEARTS */
 .floating-hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.fheart{
-  position:absolute;font-size:1.5rem;opacity:0;
-  animation:heartFloat ease-in-out infinite;
-}
+.fheart{position:absolute;font-size:1.5rem;opacity:0;animation:heartFloat ease-in-out infinite}
 @keyframes heartFloat{
   0%{opacity:0;transform:translateY(0) scale(0.5)}
   20%{opacity:0.5}
   100%{opacity:0;transform:translateY(-120px) scale(1.2) rotate(var(--rot,15deg))}
 }
 
-/* ============================================
-   PAGE 2 — PASSWORD
-============================================ */
+/* ===================== PAGE 2 — PASSWORD ===================== */
 #page-password{background:linear-gradient(160deg,#2d1515 0%,#4a2020 50%,#6b3535 100%)}
 .password-card{
   background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);
@@ -163,19 +125,10 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 }
 .lock-icon{font-size:3rem;margin-bottom:1.5rem;animation:lockPulse 2s ease-in-out infinite}
 @keyframes lockPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-.password-title{
-  font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;
-  font-style:italic;color:white;margin-bottom:0.5rem;
-}
+.password-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;font-style:italic;color:white;margin-bottom:0.5rem}
 .password-hint{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:2rem}
-.pin-display{
-  display:flex;gap:0.75rem;justify-content:center;margin-bottom:2rem;
-}
-.pin-dot{
-  width:16px;height:16px;border-radius:50%;
-  border:2px solid rgba(255,255,255,0.4);background:transparent;
-  transition:all 0.3s ease;
-}
+.pin-display{display:flex;gap:0.75rem;justify-content:center;margin-bottom:2rem}
+.pin-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,0.4);background:transparent;transition:all 0.3s ease}
 .pin-dot.filled{background:var(--rose-light);border-color:var(--rose-light);box-shadow:0 0 12px rgba(232,180,180,0.6)}
 .pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;max-width:240px;margin:0 auto}
 .pin-btn{
@@ -188,17 +141,12 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .pin-btn:active{transform:scale(0.95)}
 .pin-btn.delete{font-size:1rem;font-family:'DM Sans',sans-serif}
 .pin-btn.empty{border:none;background:transparent;pointer-events:none}
-.password-error{
-  color:#ff8080;font-size:0.85rem;margin-top:1rem;
-  opacity:0;transition:opacity 0.3s;
-}
+.password-error{color:#ff8080;font-size:0.85rem;margin-top:1rem;opacity:0;transition:opacity 0.3s}
 .password-error.show{opacity:1}
 .pw-shake{animation:shake 0.5s ease}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 
-/* ============================================
-   PAGE 3 — FIRST MET / LATEST PHOTO
-============================================ */
+/* ===================== PAGE 3 — FIRST MET ===================== */
 #page-firstmet{background:linear-gradient(135deg,#fdf5f0 0%,#fae8e0 100%)}
 .firstmet-container{
   display:grid;grid-template-columns:1fr 1fr;gap:3rem;
@@ -206,12 +154,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   position:relative;z-index:2;
 }
 @media(max-width:700px){.firstmet-container{grid-template-columns:1fr;gap:2rem}}
-
-/* Two polaroids side by side */
-.photo-stack{
-  display:flex;gap:1.25rem;align-items:flex-start;
-  justify-content:center;width:100%;
-}
+.photo-stack{display:flex;gap:1.25rem;align-items:flex-start;justify-content:center;width:100%}
 .photo-card{
   background:white;padding:0.85rem 0.85rem 0;
   box-shadow:0 15px 50px rgba(107,61,61,0.13);
@@ -225,8 +168,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .photo-card-img img{width:100%;height:100%;object-fit:cover;display:block}
 .photo-caption{
   display:block;text-align:center;padding:0.6rem 0 0.8rem;
-  font-family:'Pinyon Script',cursive;font-size:1.15rem;color:var(--brown);
-  line-height:1.2;
+  font-family:'Pinyon Script',cursive;font-size:1.15rem;color:var(--brown);line-height:1.2;
 }
 .photo-card.first{transform:rotate(-2deg)}
 .photo-card.latest{transform:rotate(1.5deg);margin-top:2rem}
@@ -235,96 +177,37 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   width:64px;height:20px;z-index:3;border-radius:3px;opacity:0.75;
 }
 .firstmet-text{padding:1rem}
-.section-label{
-  font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;
-  color:var(--rose);margin-bottom:1rem;
-}
-.big-heading{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15;
-  color:var(--brown);margin-bottom:1.5rem;
-}
+.section-label{font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--rose);margin-bottom:1rem}
+.big-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15;color:var(--brown);margin-bottom:1.5rem}
 .big-heading em{font-style:italic;color:var(--rose)}
-.body-text{
-  font-size:0.95rem;line-height:1.8;color:var(--text-soft);
-  margin-bottom:1.5rem;
-}
-.quote-block{
-  border-left:3px solid var(--rose-light);padding-left:1.25rem;
-  margin:1.5rem 0;
-}
-.quote-block p{
-  font-family:'Cormorant Garamond',serif;font-size:1.25rem;
-  font-style:italic;color:var(--brown);line-height:1.5;
-}
-.nav-bottom{
-  display:flex;gap:1rem;margin-top:2rem;align-items:center;
-}
+.body-text{font-size:0.95rem;line-height:1.8;color:var(--text-soft);margin-bottom:1.5rem}
+.quote-block{border-left:3px solid var(--rose-light);padding-left:1.25rem;margin:1.5rem 0}
+.quote-block p{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;color:var(--brown);line-height:1.5}
+.nav-bottom{display:flex;gap:1rem;margin-top:2rem;align-items:center}
 .nav-dots{display:flex;gap:0.5rem;align-items:center}
 .nav-dot{width:6px;height:6px;border-radius:50%;background:var(--rose-light)}
 .nav-dot.active{width:24px;background:var(--rose);border-radius:3px}
-.page-num{font-size:0.8rem;color:var(--text-soft);letter-spacing:0.1em;margin-left:auto}
 
-/* ============================================
-   MOMENT PAGES (4-8)
-============================================ */
+/* ===================== MOMENT PAGES ===================== */
 .moment-page{overflow:hidden}
-.moment-inner{
-  display:grid;grid-template-columns:1fr 1fr;
-  width:100%;height:100%;max-height:100vh;
-}
+.moment-inner{display:grid;grid-template-columns:1fr 1fr;width:100%;height:100%;max-height:100vh}
 @media(max-width:700px){.moment-inner{grid-template-columns:1fr;grid-template-rows:50vh 1fr}}
-.moment-photo-side{
-  position:relative;overflow:hidden;
-}
-.moment-photo-side img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform 8s ease;
-}
+.moment-photo-side{position:relative;overflow:hidden}
+.moment-photo-side img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
 .moment-photo-side:hover img{transform:scale(1.05)}
-.moment-photo-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to right,transparent 60%,var(--page-bg,#0d0a1a) 100%);
-}
+.moment-photo-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--page-bg,#0d0a1a) 100%)}
 .moment-text-side{
   display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(2rem,5vw,5rem);
-  background:var(--page-bg,#0d0a1a);overflow:auto;
+  padding:clamp(2rem,5vw,5rem);background:var(--page-bg,#0d0a1a);overflow:auto;
 }
-.moment-num{
-  font-family:'Pinyon Script',cursive;
-  font-size:6rem;line-height:1;
-  opacity:0.15;color:white;margin-bottom:-1rem;
-  pointer-events:none;
-}
-.moment-label{
-  font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;
-  color:var(--accent,var(--rose-light));margin-bottom:0.75rem;
-}
-.moment-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.15;
-  color:white;margin-bottom:1.25rem;
-}
+.moment-num{font-family:'Pinyon Script',cursive;font-size:6rem;line-height:1;opacity:0.15;color:white;margin-bottom:-1rem;pointer-events:none}
+.moment-label{font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--accent,var(--rose-light));margin-bottom:0.75rem}
+.moment-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.15;color:white;margin-bottom:1.25rem}
 .moment-title em{font-style:italic;color:var(--accent,var(--rose-light))}
-.moment-desc{
-  font-size:0.92rem;line-height:1.85;
-  color:rgba(255,255,255,0.65);margin-bottom:1.5rem;
-  max-width:400px;
-}
-.moment-date{
-  font-size:0.8rem;letter-spacing:0.2em;
-  color:var(--accent,var(--rose-light));text-transform:uppercase;
-  margin-bottom:2rem;opacity:0.7;
-}
-.moment-quote{
-  border-left:2px solid var(--accent,var(--rose-light));
-  padding-left:1rem;margin-bottom:2rem;
-}
-.moment-quote p{
-  font-family:'Cormorant Garamond',serif;font-size:1.1rem;
-  font-style:italic;color:rgba(255,255,255,0.8);line-height:1.6;
-}
+.moment-desc{font-size:0.92rem;line-height:1.85;color:rgba(255,255,255,0.65);margin-bottom:1.5rem;max-width:400px}
+.moment-date{font-size:0.8rem;letter-spacing:0.2em;color:var(--accent,var(--rose-light));text-transform:uppercase;margin-bottom:2rem;opacity:0.7}
+.moment-quote{border-left:2px solid var(--accent,var(--rose-light));padding-left:1rem;margin-bottom:2rem}
+.moment-quote p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,0.8);line-height:1.6}
 .moment-nav{display:flex;gap:0.75rem;align-items:center}
 .btn-next{
   padding:0.75rem 1.75rem;border-radius:50px;border:1.5px solid var(--accent,var(--rose-light));
@@ -335,100 +218,49 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .btn-next:hover{background:var(--accent,var(--rose-light));color:var(--page-bg,#0d0a1a)}
 .btn-back-sm{
   padding:0.75rem;border-radius:50px;border:1px solid rgba(255,255,255,0.2);
-  color:rgba(255,255,255,0.5);background:transparent;
-  cursor:pointer;transition:all 0.3s;font-size:0.85rem;
+  color:rgba(255,255,255,0.5);background:transparent;cursor:pointer;transition:all 0.3s;font-size:0.85rem;
 }
 .btn-back-sm:hover{border-color:rgba(255,255,255,0.5);color:white}
 
-/* Moment 1 — Rose/Night */
+/* Moment color themes */
 #page-moment1{--page-bg:#1a0d12;--accent:#e8b4c8}
-/* Moment 2 — Gold/Dark */
 #page-moment2{--page-bg:#0f0d08;--accent:#c9a96e}
-/* Moment 3 — Sage/Forest */
 #page-moment3{--page-bg:#080f0a;--accent:#7fbf8a}
-/* Moment 4 — Blue/Ocean */
 #page-moment4{--page-bg:#06101a;--accent:#7ab4e8}
-/* Moment 5 — Lavender/Purple */
 #page-moment5{--page-bg:#0d0a18;--accent:#c4a8e8}
 
-/* ============================================
-   PAGE 9 — VIDEO
-============================================ */
-#page-video{background:linear-gradient(160deg,#0d0a1a 0%,#1a1030 100%)}
-.video-container{
-  position:relative;z-index:2;text-align:center;
-  width:90%;max-width:800px;padding:2rem;
-}
-.video-title{
-  font-family:'Pinyon Script',cursive;font-size:clamp(2.5rem,6vw,4.5rem);
-  color:white;margin-bottom:0.5rem;
-}
-.video-subtitle{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  color:rgba(255,255,255,0.5);font-size:1rem;margin-bottom:2rem;
-}
-.video-frame{
-  width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;
-  box-shadow:0 30px 80px rgba(0,0,0,0.6);position:relative;
-  border:1px solid rgba(255,255,255,0.1);
-}
-.video-frame iframe{width:100%;height:100%;border:none}
-.video-placeholder{
-  width:100%;height:100%;background:rgba(255,255,255,0.05);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:rgba(255,255,255,0.4);cursor:pointer;
-}
-.play-icon{font-size:4rem;margin-bottom:1rem;transition:transform 0.3s}
-.video-placeholder:hover .play-icon{transform:scale(1.1)}
-.video-cta-text{font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+/* Moment photo placeholder */
+.moment-photo-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;color:rgba(255,255,255,0.2);font-size:3rem}
+.moment-photo-bg p{font-size:0.75rem;margin-top:0.5rem;font-style:italic}
 
-/* ============================================
-   PAGE 10 — CLOSING / LOVE LETTER
-============================================ */
-#page-closing{
-  background:linear-gradient(160deg,#1a0d12 0%,#2d1520 50%,#3d1a28 100%);
-  overflow:auto;
-}
-.closing-inner{
-  position:relative;z-index:2;
-  width:90%;max-width:700px;padding:4rem 0;
-  text-align:center;
-}
+/* ===================== PAGE 9 — VIDEO ===================== */
+#page-video{background:linear-gradient(160deg,#0d0a1a 0%,#1a1030 100%)}
+.video-container{position:relative;z-index:2;text-align:center;width:90%;max-width:800px;padding:2rem}
+.video-title{font-family:'Pinyon Script',cursive;font-size:clamp(2.5rem,6vw,4.5rem);color:white;margin-bottom:0.5rem}
+.video-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(255,255,255,0.5);font-size:1rem;margin-bottom:2rem}
+.video-frame{width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.1)}
+.video-frame iframe{width:100%;height:100%;border:none}
+
+/* ===================== PAGE 10 — CLOSING ===================== */
+#page-closing{background:linear-gradient(160deg,#1a0d12 0%,#2d1520 50%,#3d1a28 100%);overflow:auto}
+.closing-inner{position:relative;z-index:2;width:90%;max-width:700px;padding:4rem 0;text-align:center}
 .closing-stamp{
-  display:inline-block;width:80px;height:80px;
-  border:3px solid rgba(232,180,200,0.3);border-radius:8px;
+  width:80px;height:80px;border:3px solid rgba(232,180,200,0.3);border-radius:8px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   transform:rotate(-5deg);margin:0 auto 2.5rem;font-size:0.6rem;
-  text-transform:uppercase;letter-spacing:0.1em;color:rgba(232,180,200,0.3);font-weight:600;
-  line-height:1.6;
+  text-transform:uppercase;letter-spacing:0.1em;color:rgba(232,180,200,0.3);font-weight:600;line-height:1.6;
 }
-.closing-title{
-  font-family:'Pinyon Script',cursive;font-size:clamp(3rem,8vw,6rem);
-  color:white;line-height:1;margin-bottom:0.5rem;
-}
-.closing-to{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  color:rgba(255,255,255,0.5);font-size:1.1rem;margin-bottom:3rem;
-}
+.closing-title{font-family:'Pinyon Script',cursive;font-size:clamp(3rem,8vw,6rem);color:white;line-height:1;margin-bottom:0.5rem}
+.closing-to{font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(255,255,255,0.5);font-size:1.1rem;margin-bottom:3rem}
 .closing-letter{
   background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
   border-radius:16px;padding:2.5rem;text-align:left;
   background-image:repeating-linear-gradient(transparent,transparent 31px,rgba(255,255,255,0.04) 32px);
   background-size:100% 32px;
 }
-.letter-para{
-  font-family:'Cormorant Garamond',serif;font-size:1.2rem;
-  color:rgba(255,255,255,0.75);line-height:1.9;margin-bottom:1.5rem;
-}
-.letter-sign{
-  font-family:'Pinyon Script',cursive;font-size:2.5rem;
-  color:var(--rose-light);text-align:right;margin-top:2rem;
-}
-.music-bar{
-  display:flex;align-items:center;gap:1rem;margin-top:2.5rem;
-  background:rgba(255,255,255,0.06);border-radius:50px;padding:0.75rem 1.5rem;
-  border:1px solid rgba(255,255,255,0.1);
-}
+.letter-para{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:rgba(255,255,255,0.75);line-height:1.9;margin-bottom:1.5rem}
+.letter-sign{font-family:'Pinyon Script',cursive;font-size:2.5rem;color:var(--rose-light);text-align:right;margin-top:2rem}
+.music-bar{display:flex;align-items:center;gap:1rem;margin-top:2.5rem;background:rgba(255,255,255,0.06);border-radius:50px;padding:0.75rem 1.5rem;border:1px solid rgba(255,255,255,0.1)}
 .music-icon{font-size:1.5rem;animation:spin 3s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .music-info{flex:1;text-align:left}
@@ -437,12 +269,9 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .music-waves{display:flex;align-items:flex-end;gap:3px;height:20px}
 .wave{width:3px;background:var(--rose-light);border-radius:2px;animation:waveUp ease-in-out infinite}
 @keyframes waveUp{0%,100%{height:4px}50%{height:16px}}
-.closing-bottom{
-  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;
-}
-/* ============================================
-   NAVIGATION OVERLAY
-============================================ */
+.closing-bottom{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+
+/* ===================== NAV PILL ===================== */
 .nav-pill{
   position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);
   background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);
@@ -453,112 +282,65 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   opacity:0;transition:all 0.5s ease;pointer-events:none;
 }
 .nav-pill.visible{opacity:1;pointer-events:all}
-.nav-pill.dark{
-  background:rgba(20,10,15,0.7);border-color:rgba(255,255,255,0.1);
-}
+.nav-pill.dark{background:rgba(20,10,15,0.7);border-color:rgba(255,255,255,0.1)}
 .nav-pill.dark .nav-brand{color:var(--rose-light)}
-.nav-brand{
-  font-family:'Pinyon Script',cursive;font-size:1.4rem;color:var(--brown);
-}
-.nav-progress{
-  display:flex;gap:4px;align-items:center;
-}
+.nav-brand{font-family:'Pinyon Script',cursive;font-size:1.4rem;color:var(--brown)}
+.nav-progress{display:flex;gap:4px;align-items:center}
 .np{width:5px;height:5px;border-radius:50%;background:var(--rose-light);opacity:0.4;transition:all 0.3s}
 .np.on{opacity:1;background:var(--rose);width:16px;border-radius:3px}
 
-/* ============================================
-   ANIMATIONS
-============================================ */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+/* ===================== ANIMATIONS ===================== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{opacity:0;animation:fadeUp 0.8s ease forwards}
 .delay-1{animation-delay:0.2s}.delay-2{animation-delay:0.4s}
 .delay-3{animation-delay:0.6s}.delay-4{animation-delay:0.8s}
-.delay-5{animation-delay:1s}
-
-/* ============================================
-   PHOTO PLACEHOLDERS
-============================================ */
-.photo-placeholder{
-  width:100%;height:100%;background:linear-gradient(135deg,var(--rose-pale),var(--warm));
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:var(--text-soft);text-align:center;padding:1rem;
-}
-.photo-placeholder span{font-size:2.5rem;margin-bottom:0.5rem;opacity:0.5}
-.photo-placeholder p{font-size:0.8rem;opacity:0.6;font-style:italic}
-.photo-placeholder-dark{
-  width:100%;height:100%;background:rgba(255,255,255,0.04);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:rgba(255,255,255,0.3);text-align:center;padding:2rem;
-}
-.photo-placeholder-dark span{font-size:3rem;margin-bottom:0.75rem}
-.photo-placeholder-dark p{font-size:0.85rem;line-height:1.5;font-style:italic}
 
 /* Scrollbar */
 ::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(201,123,123,0.4);border-radius:2px}
 
-/* Confetti for success */
+/* Confetti */
 .confetti{position:fixed;pointer-events:none;z-index:9999;font-size:1.5rem;animation:confettiFall 3s ease forwards}
 @keyframes confettiFall{0%{opacity:1;top:-5%;transform:rotate(0)}100%{opacity:0;top:110%;transform:rotate(var(--r,360deg)) translateX(var(--x,0px))}}
 </style>
 </head>
 <body>
 
-<!-- ============ NAV PILL ============ -->
+<!-- NAV PILL -->
 <nav class="nav-pill" id="navPill">
   <div class="nav-brand">Forever &amp; Always ✦</div>
   <div class="nav-progress" id="navProgress"></div>
 </nav>
 
-<!-- ============ PAGE 1: INTRO ============ -->
+<!-- ===== PAGE 1: INTRO ===== -->
 <div class="page active bg-gradient-warm" id="page-intro">
   <div class="bg-dots"></div>
   <div class="floating-hearts" id="floatingHearts"></div>
-
-  <!-- Petals -->
   <div id="petals"></div>
-
   <div class="intro-content">
-    <p class="intro-eyebrow">✦A glimpse of our journey over the past year ✦</p>
+    <p class="intro-eyebrow">✦ A glimpse of our journey over the past year ✦</p>
     <h1 class="intro-title">
-      <span class="intro-name" id="name1">Nama</span>
+      <span class="intro-name" id="name1">Brannzy</span>
       <span class="intro-amp">&amp;</span>
-      <span class="intro-name" id="name2">Nama</span>
+      <span class="intro-name" id="name2">Zsaa Imoed</span>
     </h1>
     <p class="intro-subtitle">Our Journey — Sebuah cerita yang selalu ingin aku ceritakan,<br>Cerita yang isinya plenger, jamet, sedih senang, lusyu</p>
     <div class="intro-divider"></div>
     <div class="intro-cta">
-      <button class="btn-rose" onclick="goTo('page-password')">
-        Get in our world ✦
-      </button>
+      <button class="btn-rose" onclick="goTo('page-password')">Get in our world ✦</button>
     </div>
   </div>
 </div>
 
-<!-- ============ PAGE 2: PASSWORD ============ -->
-<div class="page" id="page-password" style="background:linear-gradient(160deg,#2d1515 0%,#4a2020 50%,#6b3535 100%)">
+<!-- ===== PAGE 2: PASSWORD ===== -->
+<div class="page" id="page-password">
   <div id="stars-pw"></div>
   <div class="password-card" id="pwCard">
     <div class="lock-icon">🔐</div>
     <h2 class="password-title">Passwordnya Afa yach</h2>
-    <!-- EDIT HINT HERE -->
     <p class="password-hint">Petunjuk: Tanggal acu confess cinta (DDMMYYYY)</p>
-    <div class="pin-display" id="pinDisplay">
-      <div class="pin-dot" id="dot-0"></div>
-      <div class="pin-dot" id="dot-1"></div>
-      <div class="pin-dot" id="dot-2"></div>
-      <div class="pin-dot" id="dot-3"></div>
-      <div class="pin-dot" id="dot-4"></div>
-      <div class="pin-dot" id="dot-5"></div>
-      <div class="pin-dot" id="dot-6"></div>
-      <div class="pin-dot" id="dot-7"></div>
-    </div>
-    <div class="pin-pad" id="pinPad">
+    <div class="pin-display" id="pinDisplay"></div>
+    <div class="pin-pad">
       <button class="pin-btn" onclick="pinPress('1')">1</button>
       <button class="pin-btn" onclick="pinPress('2')">2</button>
       <button class="pin-btn" onclick="pinPress('3')">3</button>
@@ -576,68 +358,38 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   </div>
 </div>
 
-<!-- ============ PAGE 3: FIRST MET + LATEST ============ -->
+<!-- ===== PAGE 3: FIRST MET + LATEST ===== -->
 <div class="page bg-gradient-dawn" id="page-firstmet">
   <div class="bg-dots" style="opacity:0.2"></div>
   <div class="firstmet-container">
 
-    <!-- Photos -->
     <div class="photo-stack fade-in delay-1">
-
-      <!-- FOTO PERTAMA KETEMU -->
+      <!-- FOTO PERTAMA KETEMU — file: foto1page1.jpg -->
       <div class="photo-card first">
         <div class="washi-strip" style="background:rgba(201,123,123,0.6)"></div>
         <div class="photo-card-img">
-            <img src="https://ibb.co.com/v6cvWySR" alt="First met">
-
-          <div class="photo-placeholder">
-            <span>📷</span>
-            <p style="font-size:0.75rem;margin-top:0.5rem;opacity:0.6">
-              Foto pertama ketemu<br>
-              <span style="font-size:0.65rem">Upload ke imgbb.com → copy Direct Link</span>
-            </p>
-          </div>
+          <img src="foto1page1.jpg" alt="First met">
         </div>
         <span class="photo-caption">Our First Met...</span>
       </div>
-
-      <!-- FOTO TERBARU -->
+      <!-- FOTO TERBARU — file: foto2page2.jpg -->
       <div class="photo-card latest">
         <div class="washi-strip" style="background:rgba(201,160,110,0.6)"></div>
         <div class="photo-card-img">
-          <!--
-            Ganti dengan:
-            <img src="LINK_FOTO_LANGSUNG" alt="Latest">
-          -->
-          <div class="photo-placeholder">
-            <span>💕</span>
-            <p style="font-size:0.75rem;margin-top:0.5rem;opacity:0.6">
-              Foto terbaru kita<br>
-              <span style="font-size:0.65rem">Upload ke imgbb.com → copy Direct Link</span>
-            </p>
-          </div>
+          <img src="foto2page2.jpg" alt="Latest">
         </div>
-        <span class="photo-caption">& now.</span>
+        <span class="photo-caption">&amp; now.</span>
       </div>
-
     </div>
 
-    <!-- Text -->
     <div class="firstmet-text fade-in delay-3">
       <p class="section-label">✦ Chapter One</p>
-      <!-- EDIT HEADING -->
-      <h2 class="big-heading">
-        Hari di mana<br>
-        <em>semuanya berubah</em>
-      </h2>
-      <!-- EDIT DESCRIPTION -->
+      <h2 class="big-heading">Hari di mana<br><em>semuanya berubah</em></h2>
       <p class="body-text">
-        [Ceritakan di sini bagaimana pertama kali kalian bertemu. Kapan, di mana, apa yang kamu rasakan. Buat tulisan ini personal dan jujur.]
+        [Ceritakan di sini bagaimana pertama kali kalian bertemu. Kapan, di mana, apa yang kamu rasakan.]
       </p>
       <div class="quote-block">
-        <p>
-          "Kalau bisa putar ulang waktu, aku masih pilih hari itu — hari aku ketemu kamu."
-        </p>
+        <p>"Kalau bisa putar ulang waktu, aku masih pilih hari itu — hari aku ketemu kamu."</p>
       </div>
       <div class="nav-bottom">
         <button class="btn-rose" onclick="goTo('page-moment1')">Lanjut ke kenangan kita ↓</button>
@@ -653,31 +405,20 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   </div>
 </div>
 
-<!-- ============ PAGE 4: MOMENT 1 ============ -->
+<!-- ===== PAGE 4: MOMENT 1 — foto1page3.jpg ===== -->
 <div class="page moment-page" id="page-moment1">
   <div class="moment-inner">
     <div class="moment-photo-side">
-      <!-- GANTI dengan foto momen 1 -->
-      <div class="photo-placeholder-dark" style="height:100%;background:rgba(232,180,200,0.08)">
-        <span>🌸</span>
-        <p>Foto Momen #1<br><small>Ganti dengan img src=""</small></p>
-      </div>
+      <img src="foto1page3.jpg" alt="Momen 1">
       <div class="moment-photo-overlay" style="background:linear-gradient(to right,transparent 40%,#1a0d12 100%)"></div>
     </div>
     <div class="moment-text-side">
       <div class="moment-num">01</div>
       <p class="moment-label">✦ Momen Pertama</p>
-      <!-- EDIT MOMENT 1 TITLE -->
       <h2 class="moment-title">Judul <em>Momen Ini</em></h2>
-      <!-- EDIT DATE -->
       <p class="moment-date">📅 Tanggal • Tempat</p>
-      <!-- EDIT DESCRIPTION -->
-      <p class="moment-desc">
-        [Ceritakan momen ini. Apa yang terjadi, kenapa ini berkesan, gimana rasanya saat itu. Tulis dengan perasaan.]
-      </p>
-      <div class="moment-quote">
-        <p>"Quote atau kutipan yang cocok dengan momen ini."</p>
-      </div>
+      <p class="moment-desc">[Ceritakan momen ini. Apa yang terjadi, kenapa ini berkesan, gimana rasanya saat itu.]</p>
+      <div class="moment-quote"><p>"Quote atau kutipan yang cocok dengan momen ini."</p></div>
       <div class="moment-nav">
         <button class="btn-back-sm" onclick="goTo('page-firstmet')">←</button>
         <button class="btn-next" onclick="goTo('page-moment2')">Momen berikutnya →</button>
@@ -686,14 +427,11 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   </div>
 </div>
 
-<!-- ============ PAGE 5: MOMENT 2 ============ -->
+<!-- ===== PAGE 5: MOMENT 2 — foto2page4.jpg ===== -->
 <div class="page moment-page" id="page-moment2">
   <div class="moment-inner">
     <div class="moment-photo-side">
-      <div class="photo-placeholder-dark" style="height:100%;background:rgba(201,169,110,0.08)">
-        <span>✨</span>
-        <p>Foto Momen #2<br><small>Ganti dengan img src=""</small></p>
-      </div>
+      <img src="foto2page4.jpg" alt="Momen 2">
       <div class="moment-photo-overlay" style="background:linear-gradient(to right,transparent 40%,#0f0d08 100%)"></div>
     </div>
     <div class="moment-text-side">
@@ -702,9 +440,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <h2 class="moment-title">Judul <em>Momen Ini</em></h2>
       <p class="moment-date">📅 Tanggal • Tempat</p>
       <p class="moment-desc">[Ceritakan momen ini. Tulis dengan perasaan yang jujur dan hangat.]</p>
-      <div class="moment-quote">
-        <p>"Quote atau kata-kata yang cocok di sini."</p>
-      </div>
+      <div class="moment-quote"><p>"Quote atau kata-kata yang cocok di sini."</p></div>
       <div class="moment-nav">
         <button class="btn-back-sm" onclick="goTo('page-moment1')">←</button>
         <button class="btn-next" onclick="goTo('page-moment3')">Momen berikutnya →</button>
@@ -713,14 +449,11 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   </div>
 </div>
 
-<!-- ============ PAGE 6: MOMENT 3 ============ -->
+<!-- ===== PAGE 6: MOMENT 3 — foto3page5.jpg ===== -->
 <div class="page moment-page" id="page-moment3">
   <div class="moment-inner">
     <div class="moment-photo-side">
-      <div class="photo-placeholder-dark" style="height:100%;background:rgba(127,191,138,0.08)">
-        <span>🌿</span>
-        <p>Foto Momen #3<br><small>Ganti dengan img src=""</small></p>
-      </div>
+      <img src="foto3page5.jpg" alt="Momen 3">
       <div class="moment-photo-overlay" style="background:linear-gradient(to right,transparent 40%,#080f0a 100%)"></div>
     </div>
     <div class="moment-text-side">
@@ -729,9 +462,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <h2 class="moment-title">Judul <em>Momen Ini</em></h2>
       <p class="moment-date">📅 Tanggal • Tempat</p>
       <p class="moment-desc">[Ceritakan momen ini. Apa yang bikin ini spesial dan tak terlupakan.]</p>
-      <div class="moment-quote">
-        <p>"Quote yang cocok dengan suasana momen ini."</p>
-      </div>
+      <div class="moment-quote"><p>"Quote yang cocok dengan suasana momen ini."</p></div>
       <div class="moment-nav">
         <button class="btn-back-sm" onclick="goTo('page-moment2')">←</button>
         <button class="btn-next" onclick="goTo('page-moment4')">Momen berikutnya →</button>
@@ -740,14 +471,11 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   </div>
 </div>
 
-<!-- ============ PAGE 7: MOMENT 4 ============ -->
+<!-- ===== PAGE 7: MOMENT 4 — foto4page6.jpg ===== -->
 <div class="page moment-page" id="page-moment4">
   <div class="moment-inner">
     <div class="moment-photo-side">
-      <div class="photo-placeholder-dark" style="height:100%;background:rgba(122,180,232,0.08)">
-        <span>🌊</span>
-        <p>Foto Momen #4<br><small>Ganti dengan img src=""</small></p>
-      </div>
+      <img src="foto4page6.jpg" alt="Momen 4">
       <div class="moment-photo-overlay" style="background:linear-gradient(to right,transparent 40%,#06101a 100%)"></div>
     </div>
     <div class="moment-text-side">
@@ -756,9 +484,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <h2 class="moment-title">Judul <em>Momen Ini</em></h2>
       <p class="moment-date">📅 Tanggal • Tempat</p>
       <p class="moment-desc">[Ceritakan momen ini dengan detail-detail kecil yang hanya kalian berdua yang ingat.]</p>
-      <div class="moment-quote">
-        <p>"Kata-kata yang terus terngiang dari momen ini."</p>
-      </div>
+      <div class="moment-quote"><p>"Kata-kata yang terus terngiang dari momen ini."</p></div>
       <div class="moment-nav">
         <button class="btn-back-sm" onclick="goTo('page-moment3')">←</button>
         <button class="btn-next" onclick="goTo('page-moment5')">Momen berikutnya →</button>
@@ -767,14 +493,11 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   </div>
 </div>
 
-<!-- ============ PAGE 8: MOMENT 5 ============ -->
+<!-- ===== PAGE 8: MOMENT 5 — foto5page7.jpg ===== -->
 <div class="page moment-page" id="page-moment5">
   <div class="moment-inner">
     <div class="moment-photo-side">
-      <div class="photo-placeholder-dark" style="height:100%;background:rgba(196,168,232,0.08)">
-        <span>💜</span>
-        <p>Foto Momen #5<br><small>Ganti dengan img src=""</small></p>
-      </div>
+      <img src="foto5page7.jpg" alt="Momen 5">
       <div class="moment-photo-overlay" style="background:linear-gradient(to right,transparent 40%,#0d0a18 100%)"></div>
     </div>
     <div class="moment-text-side">
@@ -783,9 +506,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <h2 class="moment-title">Judul <em>Momen Ini</em></h2>
       <p class="moment-date">📅 Tanggal • Tempat</p>
       <p class="moment-desc">[Ceritakan momen terakhir ini. Mungkin yang paling baru atau paling berkesan.]</p>
-      <div class="moment-quote">
-        <p>"Dan aku harap masih akan ada banyak momen lagi setelah ini."</p>
-      </div>
+      <div class="moment-quote"><p>"Dan aku harap masih akan ada banyak momen lagi setelah ini."</p></div>
       <div class="moment-nav">
         <button class="btn-back-sm" onclick="goTo('page-moment4')">←</button>
         <button class="btn-next" onclick="goTo('page-video')">Ada pesan dari aku →</button>
@@ -794,7 +515,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   </div>
 </div>
 
-<!-- ============ PAGE 9: VIDEO ============ -->
+<!-- ===== PAGE 9: VIDEO ===== -->
 <div class="page" id="page-video" style="background:linear-gradient(160deg,#0d0a1a 0%,#1a1030 100%)">
   <div id="stars-vid"></div>
   <div class="video-container">
@@ -802,74 +523,49 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <h2 class="video-title">Sebuah pesan</h2>
       <p class="video-subtitle">kecil dari aku, untukmu</p>
     </div>
-
     <div class="video-frame fade-in delay-2">
       <!--
-        CARA PASANG VIDEO:
-        Opsi 1 - YouTube: ganti src jadi "https://www.youtube.com/embed/VIDEO_ID"
-        Opsi 2 - Google Drive: ganti src jadi link embed dari Drive
-        Opsi 3 - Hapus iframe, pakai tag <video> untuk file lokal
+        GANTI BAGIAN INI DENGAN VIDEO KAMU:
+        YouTube  → <iframe src="https://www.youtube.com/embed/VIDEO_ID" ...></iframe>
+        Drive    → <iframe src="https://drive.google.com/file/d/FILE_ID/preview" ...></iframe>
       -->
-      <div class="video-placeholder" onclick="this.innerHTML='<p style=\'color:rgba(255,255,255,0.4);padding:2rem\'>Pasang link video di kode HTML bagian ini</p>'">
-        <div class="play-icon">▶</div>
-        <p class="video-cta-text">Klik untuk putar video</p>
-        <p style="color:rgba(255,255,255,0.25);font-size:0.75rem;margin-top:0.5rem">
-          Ganti placeholder ini dengan iframe YouTube/Drive
-        </p>
-      </div>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
     </div>
-
     <div class="fade-in delay-3" style="margin-top:2rem">
-      <button class="btn-ghost" onclick="goTo('page-closing')">
-        Lanjut ke surat untukmu →
-      </button>
+      <button class="btn-ghost" onclick="goTo('page-closing')">Lanjut ke surat untukmu →</button>
     </div>
   </div>
 </div>
 
-<!-- ============ PAGE 10: CLOSING ============ -->
+<!-- ===== PAGE 10: CLOSING ===== -->
 <div class="page" id="page-closing">
   <div id="stars-close"></div>
   <div id="petals-close"></div>
   <div class="closing-inner">
-    <div class="closing-stamp">
-      <span>DENGAN</span><span>❤</span><span>TULUS</span>
-    </div>
-    <!-- EDIT NAMA PACAR -->
+    <div class="closing-stamp"><span>DENGAN</span><span>❤</span><span>TULUS</span></div>
     <h1 class="closing-title">Untuk kamu,</h1>
     <p class="closing-to">yang selalu ada di hati aku</p>
-
     <div class="closing-letter">
-      <!--
-        EDIT: Ganti teks di bawah dengan ucapan terima kasih dan maaf yang kamu mau tulis.
-        Ini adalah bagian paling penting — tulis dari hati!
-      -->
-      <p class="letter-para">
-        [Nama Pacar],
-      </p>
+      <p class="letter-para">Zsaa,</p>
       <p class="letter-para">
         Ada banyak hal yang pengen aku bilang tapi selalu susah diucapkan langsung. Makanya aku buat ini — supaya kamu bisa baca sendiri, dan ngerasain betapa seriusnya aku.
       </p>
       <p class="letter-para">
-        <strong style="color:rgba(255,255,255,0.9)">Terima kasih</strong> sudah sabar sama aku. Terima kasih udah ada di hari-hari aku yang paling berantakan, yang paling sepi, yang paling bingung. Kamu nggak pernah pergi waktu aku susah — dan itu bukan hal kecil, itu sesuatu yang nggak bakal aku lupain seumur hidup.
+        <strong style="color:rgba(255,255,255,0.9)">Terima kasih</strong> sudah sabar sama aku. Terima kasih udah ada di hari-hari aku yang paling berantakan, yang paling sepi, yang paling bingung. Kamu nggak pernah pergi waktu aku susah — dan itu bukan hal kecil.
       </p>
       <p class="letter-para">
-        Dan <strong style="color:rgba(255,255,255,0.9)">maaf</strong>... buat semua hal yang pernah aku lakuin yang nyakitin kamu. Maaf kalau aku sering nggak bisa jelasin perasaan aku dengan baik. Maaf kalau aku pernah bikin kamu ragu. Maaf kalau caraku nyayangin kamu kadang nggak keliatan.
+        Dan <strong style="color:rgba(255,255,255,0.9)">maaf</strong>... buat semua hal yang pernah aku lakuin yang nyakitin kamu. Maaf kalau aku sering nggak bisa jelasin perasaan aku dengan baik. Maaf kalau aku pernah bikin kamu ragu.
       </p>
       <p class="letter-para">
         Tapi yang aku tau pasti: kamu adalah bagian dari cerita hidup aku yang paling berharga. Dan aku mau terus nulis cerita itu, bareng kamu.
       </p>
-      <p class="letter-para" style="color:rgba(255,255,255,0.5);font-style:italic">
-        [Tambahkan lebih banyak kata-kata personal di sini — ceritamu sendiri, jujur dan dari hati]
-      </p>
-      <p class="letter-sign">Dengan cinta, aku. 🌸</p>
+      <p class="letter-sign">Dengan cinta, Brannzy 🌸</p>
     </div>
 
-    <!-- Music Bar -->
+    <!-- LAGU — ganti src dengan link Spotify/YouTube lagu kesukaan dia -->
     <div class="music-bar">
       <div class="music-icon">💿</div>
       <div class="music-info">
-        <!-- EDIT NAMA LAGU & ARTIS -->
         <div class="music-title">Nama Lagu Kesukaannya</div>
         <div class="music-artist">Nama Artis • sedang diputar untukmu</div>
       </div>
@@ -881,112 +577,76 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
         <div class="wave" style="animation-duration:0.7s;animation-delay:0.15s"></div>
       </div>
     </div>
-
     <!--
-      CARA PASANG LAGU:
-      1. Spotify - embed iframe dari share > embed
-      2. YouTube Music - iframe dari youtube embed
-      Contoh:
+      PASANG LAGU DI SINI — contoh Spotify:
       <iframe style="border-radius:12px;margin-top:1rem;width:100%"
         src="https://open.spotify.com/embed/track/TRACK_ID"
-        height="80" frameBorder="0" allowfullscreen
+        height="80" frameborder="0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
       </iframe>
     -->
-    <p style="color:rgba(255,255,255,0.2);font-size:0.7rem;margin-top:0.5rem;text-align:center">
-      ↑ Pasang iframe Spotify/YouTube di bagian komentar di atas
-    </p>
 
     <div class="closing-bottom">
-      <button class="btn-ghost" onclick="goTo('page-firstmet')" style="font-size:0.8rem;padding:0.6rem 1.25rem">
-        ← Lihat dari awal
-      </button>
-      <button class="btn-ghost" onclick="launchHearts()" style="font-size:0.8rem;padding:0.6rem 1.25rem">
-        ✦ Kirim cinta
-      </button>
+      <button class="btn-ghost" onclick="goTo('page-firstmet')" style="font-size:0.8rem;padding:0.6rem 1.25rem">← Lihat dari awal</button>
+      <button class="btn-ghost" onclick="launchConfetti()" style="font-size:0.8rem;padding:0.6rem 1.25rem">✦ Kirim cinta</button>
     </div>
   </div>
 </div>
 
-<!-- ============ SCRIPTS ============ -->
+<!-- ===== SCRIPTS ===== -->
 <script>
-// ============================================
-// KONFIGURASI — EDIT DI SINI
-// ============================================
 const CONFIG = {
-  name1: "Brannzy",      // ← GANTI nama kamu
-  name2: "Zsaa Imoed",     // ← GANTI nama pacarmu
-  password: "31012026"  // ← GANTI dengan password (max 8 digit)
+  name1: "Brannzy",
+  name2: "Zsaa Imoed",
+  password: "31012026"
 };
 
-// ============================================
-// SETUP
-// ============================================
+// Set names
 document.getElementById('name1').textContent = CONFIG.name1;
 document.getElementById('name2').textContent = CONFIG.name2;
 
-// Adjust pin dots to password length
+// Build PIN dots
 const pwLen = CONFIG.password.length;
 const pinDisplayEl = document.getElementById('pinDisplay');
-pinDisplayEl.innerHTML = '';
 for(let i=0;i<pwLen;i++){
   const d=document.createElement('div');
   d.className='pin-dot';d.id='dot-'+i;
   pinDisplayEl.appendChild(d);
 }
 
-// Page order for progress dots
-const PAGE_ORDER = [
-  'page-intro','page-password','page-firstmet',
-  'page-moment1','page-moment2','page-moment3','page-moment4','page-moment5',
-  'page-video','page-closing'
-];
-const UNLOCKED_FROM = 2; // pages shown in nav after password
-
+const PAGE_ORDER = ['page-intro','page-password','page-firstmet','page-moment1','page-moment2','page-moment3','page-moment4','page-moment5','page-video','page-closing'];
 let currentPage = 'page-intro';
 let pinBuffer = '';
-let navVisible = false;
 
-// ============================================
-// NAVIGATION
-// ============================================
+// Navigation
 function goTo(targetId){
-  const cur = document.getElementById(currentPage);
-  const tgt = document.getElementById(targetId);
+  const cur=document.getElementById(currentPage);
+  const tgt=document.getElementById(targetId);
   if(!tgt||!cur) return;
-
   cur.classList.remove('active');
   cur.classList.add('exit-up');
   setTimeout(()=>cur.classList.remove('exit-up'),800);
-
   tgt.classList.add('active');
-  // Trigger fade-ins inside new page
   tgt.querySelectorAll('.fade-in').forEach(el=>{
     el.style.animationPlayState='paused';
     void el.offsetWidth;
     el.style.animationPlayState='running';
   });
-
-  currentPage = targetId;
+  currentPage=targetId;
   updateNav(targetId);
-
-  // Dark pages
-  const darkPages=['page-password','page-moment1','page-moment2','page-moment3',
-    'page-moment4','page-moment5','page-video','page-closing'];
-  const navPill=document.getElementById('navPill');
-  if(darkPages.includes(targetId)){navPill.classList.add('dark')}
-  else{navPill.classList.remove('dark')}
+  const dark=['page-password','page-moment1','page-moment2','page-moment3','page-moment4','page-moment5','page-video','page-closing'];
+  const nav=document.getElementById('navPill');
+  dark.includes(targetId)?nav.classList.add('dark'):nav.classList.remove('dark');
 }
 
 function updateNav(pageId){
-  const navPill=document.getElementById('navPill');
+  const nav=document.getElementById('navPill');
   const idx=PAGE_ORDER.indexOf(pageId);
-  
-  if(idx>=UNLOCKED_FROM){
-    navPill.classList.add('visible');
+  if(idx>=2){
+    nav.classList.add('visible');
     const prog=document.getElementById('navProgress');
     prog.innerHTML='';
-    for(let i=UNLOCKED_FROM;i<PAGE_ORDER.length;i++){
+    for(let i=2;i<PAGE_ORDER.length;i++){
       const d=document.createElement('div');
       d.className='np'+(PAGE_ORDER[i]===pageId?' on':'');
       prog.appendChild(d);
@@ -994,74 +654,16 @@ function updateNav(pageId){
   }
 }
 
-// ============================================
-// PARTICLES
-// ============================================
-function createPetals(containerId='petals', count=12){
-  const c=document.getElementById(containerId);
-  if(!c) return;
-  const emojis=['🌸','🌺','🌹','✿','❀','🌷'];
-  for(let i=0;i<count;i++){
-    const p=document.createElement('div');
-    p.className='petal';
-    p.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-    p.style.left=Math.random()*100+'%';
-    p.style.setProperty('--drift',(Math.random()-0.5)*100+'px');
-    p.style.animationDuration=(Math.random()*8+6)+'s';
-    p.style.animationDelay=(Math.random()*10)+'s';
-    p.style.fontSize=(Math.random()*12+10)+'px';
-    c.appendChild(p);
-  }
-}
-
-function createStars(containerId, count=80){
-  const c=document.getElementById(containerId);
-  if(!c) return;
-  for(let i=0;i<count;i++){
-    const s=document.createElement('div');
-    s.className='star';
-    s.style.left=Math.random()*100+'%';
-    s.style.top=Math.random()*100+'%';
-    s.style.animationDuration=(Math.random()*3+1)+'s';
-    s.style.animationDelay=(Math.random()*3)+'s';
-    s.style.width=s.style.height=(Math.random()*2+1)+'px';
-    c.appendChild(s);
-  }
-}
-
-function createFloatingHearts(){
-  const c=document.getElementById('floatingHearts');
-  const hearts=['♥','❤','💕','💗','💖'];
-  for(let i=0;i<8;i++){
-    const h=document.createElement('div');
-    h.className='fheart';
-    h.textContent=hearts[Math.floor(Math.random()*hearts.length)];
-    h.style.left=(5+Math.random()*90)+'%';
-    h.style.bottom=(Math.random()*30)+'%';
-    h.style.color=`hsl(${340+Math.random()*30},${60+Math.random()*30}%,${60+Math.random()*20}%)`;
-    h.style.setProperty('--rot',(Math.random()-0.5)*30+'deg');
-    h.style.animationDuration=(Math.random()*4+3)+'s';
-    h.style.animationDelay=(Math.random()*5)+'s';
-    c.appendChild(h);
-  }
-}
-
-// ============================================
-// PASSWORD LOGIC
-// ============================================
+// PIN logic
 function pinPress(num){
   if(pinBuffer.length>=pwLen) return;
   pinBuffer+=num;
-  // Update dots
   for(let i=0;i<pwLen;i++){
     const dot=document.getElementById('dot-'+i);
     if(dot) dot.classList.toggle('filled',i<pinBuffer.length);
   }
-  if(pinBuffer.length===pwLen){
-    setTimeout(checkPassword,200);
-  }
+  if(pinBuffer.length===pwLen) setTimeout(checkPassword,200);
 }
-
 function pinDelete(){
   if(!pinBuffer.length) return;
   pinBuffer=pinBuffer.slice(0,-1);
@@ -1070,7 +672,6 @@ function pinDelete(){
     if(dot) dot.classList.toggle('filled',i<pinBuffer.length);
   }
 }
-
 function checkPassword(){
   if(pinBuffer===CONFIG.password){
     launchConfetti();
@@ -1089,9 +690,7 @@ function checkPassword(){
   }
 }
 
-// ============================================
-// CONFETTI & HEARTS
-// ============================================
+// Confetti
 function launchConfetti(){
   const items=['🎉','✨','💖','🌸','💕','🎊','⭐','🌟'];
   for(let i=0;i<30;i++){
@@ -1109,13 +708,49 @@ function launchConfetti(){
   }
 }
 
-function launchHearts(){
-  launchConfetti();
+// Particles
+function createPetals(id,count=12){
+  const c=document.getElementById(id);if(!c)return;
+  const e=['🌸','🌺','🌹','✿','❀','🌷'];
+  for(let i=0;i<count;i++){
+    const p=document.createElement('div');p.className='petal';
+    p.textContent=e[Math.floor(Math.random()*e.length)];
+    p.style.left=Math.random()*100+'%';
+    p.style.setProperty('--drift',(Math.random()-0.5)*100+'px');
+    p.style.animationDuration=(Math.random()*8+6)+'s';
+    p.style.animationDelay=(Math.random()*10)+'s';
+    p.style.fontSize=(Math.random()*12+10)+'px';
+    c.appendChild(p);
+  }
+}
+function createStars(id,count=80){
+  const c=document.getElementById(id);if(!c)return;
+  for(let i=0;i<count;i++){
+    const s=document.createElement('div');s.className='star';
+    s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+    s.style.animationDuration=(Math.random()*3+1)+'s';
+    s.style.animationDelay=(Math.random()*3)+'s';
+    s.style.width=s.style.height=(Math.random()*2+1)+'px';
+    c.appendChild(s);
+  }
+}
+function createFloatingHearts(){
+  const c=document.getElementById('floatingHearts');
+  const h=['♥','❤','💕','💗','💖'];
+  for(let i=0;i<8;i++){
+    const el=document.createElement('div');el.className='fheart';
+    el.textContent=h[Math.floor(Math.random()*h.length)];
+    el.style.left=(5+Math.random()*90)+'%';
+    el.style.bottom=(Math.random()*30)+'%';
+    el.style.color=`hsl(${340+Math.random()*30},${60+Math.random()*30}%,${60+Math.random()*20}%)`;
+    el.style.setProperty('--rot',(Math.random()-0.5)*30+'deg');
+    el.style.animationDuration=(Math.random()*4+3)+'s';
+    el.style.animationDelay=(Math.random()*5)+'s';
+    c.appendChild(el);
+  }
 }
 
-// ============================================
-// KEYBOARD SUPPORT
-// ============================================
+// Keyboard PIN
 document.addEventListener('keydown',(e)=>{
   if(currentPage==='page-password'){
     if(e.key>='0'&&e.key<='9') pinPress(e.key);
@@ -1123,14 +758,12 @@ document.addEventListener('keydown',(e)=>{
   }
 });
 
-// ============================================
-// INIT
-// ============================================
-createPetals('petals', 15);
-createPetals('petals-close', 8);
-createStars('stars-pw', 60);
-createStars('stars-vid', 80);
-createStars('stars-close', 100);
+// Init
+createPetals('petals',15);
+createPetals('petals-close',8);
+createStars('stars-pw',60);
+createStars('stars-vid',80);
+createStars('stars-close',100);
 createFloatingHearts();
 </script>
 </body>
